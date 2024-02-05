@@ -1,12 +1,12 @@
 resource "aws_s3_bucket" "this" {
-    bucket = "${var.bucket_name}"
+  bucket = var.bucket_name
 
-    tags = var.tags
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_acl" "this" {
-    bucket = aws_s3_bucket.this.id
-    acl    = var.acl
+  bucket = aws_s3_bucket.this.id
+  acl    = var.acl
 }
 
 resource "aws_s3_bucket_public_access_block" "this" {
@@ -19,8 +19,8 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_s3_bucket_versioning" "this" {
-    bucket = aws_s3_bucket.this.id
-    versioning_configuration {
+  bucket = aws_s3_bucket.this.id
+  versioning_configuration {
     status = var.versioning
   }
 }
