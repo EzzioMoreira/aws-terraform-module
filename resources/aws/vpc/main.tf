@@ -1,9 +1,9 @@
 module "vpc" {
-  source = "../../../modules/aws/vpc"
+  source   = "../../../modules/aws/vpc"
   vpc_cidr = local.environment[terraform.workspace].vpc_cidr
-  vpc_id = module.vpc.vpc_id
+  vpc_id   = module.vpc.vpc_id
 
-  subnet_cidr = for idx, subnet in local.environment[terraform.workspace].subnets : idx => subnet.cidr
+  subnet_cidr = local.environment[terraform.workspace].subnets
 
   availability_zones = local.environment[terraform.workspace].availability_zones
 

@@ -23,22 +23,22 @@ variable "vpc_cidr" {
   description = "CIDR da VPC"
 }
 
-variable vpc_id {
+variable "vpc_id" {
   type        = string
   description = "ID da VPC"
 }
 
-variable subnet_cidr {
+variable "subnet_cidr" {
   type        = string
   description = "CIDR das subnets"
 }
 
-variable availability_zones {
+variable "availability_zones" {
   type        = string
   description = "Zonas de disponibilidade para subnet"
 }
 
-variable public_ip {
+variable "public_ip" {
   type        = bool
   default     = "false"
   description = "Habilitar IP público"

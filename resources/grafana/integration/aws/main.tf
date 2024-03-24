@@ -3,7 +3,7 @@ resource "aws_iam_role" "grafana_labs_cloudwatch_integration" {
   description = "Role used by Grafana CloudWatch integration."
   # Allow Grafana Labs' AWS account to assume this role.
   assume_role_policy = data.aws_iam_policy_document.trust_grafana.json
-  tags = local.tags
+  tags               = local.tags
 
   # This policy allows the role to discover metrics via tags and export them.
   inline_policy {

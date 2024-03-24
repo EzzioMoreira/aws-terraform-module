@@ -2,10 +2,17 @@ projects:
 - name: dynamodb
   dir: ./resources/aws/dynamodb
   workflow: default
+
 - name: cluster-ecs-development
   dir: ./resources/aws/cluster-ecs
   workflow: default
   workspace: development
+
+- name: s3-boletos-clinics-development
+  dir: ./resources/aws/s3
+  workflow: default
+  workspace: development
+
 workflows:
   default:
     plan:

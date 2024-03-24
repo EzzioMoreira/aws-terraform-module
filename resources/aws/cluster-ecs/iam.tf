@@ -22,8 +22,8 @@ resource "aws_iam_role_policy_attachment" "this" {
 }
 
 resource "aws_iam_instance_profile" "this" {
-  name        = "ecs-node-profile-${local.cluster_name}"
-  path        = "/ecs/instance/"
-  role        = aws_iam_role.this.name
-  tags        = local.tags
+  name = "ecs-node-profile-${local.cluster_name}"
+  path = "/ecs/instance/"
+  role = aws_iam_role.this.name
+  tags = local.tags
 }

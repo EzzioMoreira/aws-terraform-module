@@ -7,18 +7,18 @@ locals {
       vpc_cidr = "10.10.0.0/16"
       subnets = {
         subnet_1 = {
-          cidr = ""
-          az   = "us-east-1a"
+          cidr      = ""
+          az        = "us-east-1a"
           public_ip = true
         }
         subnet_2 = {
-          cidr = ""
-          az   = "us-east-1b"
+          cidr      = ""
+          az        = "us-east-1b"
           public_ip = true
         }
         subnet_3 = {
-          cidr = ""
-          az   = "us-east-1c"
+          cidr      = ""
+          az        = "us-east-1c"
           public_ip = true
         }
       }
