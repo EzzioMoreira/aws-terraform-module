@@ -6,8 +6,16 @@ locals {
         bucket_1 = "drcash-boletos-clinics-dev"
       }
     }
-    staging    = {}
-    production = {}
+    staging    = {
+      buckets = {
+        bucket_1 = "drcash-boletos-clinics-stg"
+      }
+    }
+    production = {
+      buckets = {
+        bucket_1 = "drcash-boletos-clinics-prd"
+      }
+    }
   }
   tags = {
     env           = "${terraform.workspace}"
