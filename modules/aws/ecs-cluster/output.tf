@@ -7,3 +7,7 @@ output "ecs_cluster" {
     tags             = var.tags
   }
 }
+
+output "autoscaling_name" {
+  value = aws_autoscaling_group.this.name 
+}
