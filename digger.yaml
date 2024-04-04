@@ -4,7 +4,7 @@ projects:
   workflow: default
 
 - name: ecs-cluster-development
-  dir: ./resources/aws/ecs-cluster
+  dir: ./resources/aws/ecs-cluster-development
   workflow: default
   workspace: development
 

@@ -1,7 +1,7 @@
 resource "aws_autoscaling_group" "this" {
   name_prefix               = "ecs-cluster-${var.cluster_name}-asg"
   force_delete              = true
-  availability_zones        = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  vpc_zone_identifier       = var.subnet_ids
   min_size                  = var.min_size
   max_size                  = var.max_size
   desired_capacity          = var.desired_size

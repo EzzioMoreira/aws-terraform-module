@@ -11,3 +11,7 @@ output "ecs_cluster" {
 output "autoscaling_name" {
   value = aws_autoscaling_group.this.name 
 }
+
+output "vpc_id" {
+  value = var.vpc_id
+}
