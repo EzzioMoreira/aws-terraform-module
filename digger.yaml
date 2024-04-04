@@ -3,8 +3,8 @@ projects:
   dir: ./resources/aws/dynamodb
   workflow: default
 
-- name: cluster-ecs-development
-  dir: ./resources/aws/cluster-ecs
+- name: ecs-cluster-development
+  dir: ./resources/aws/ecs-cluster
   workflow: default
   workspace: development
 

@@ -4,9 +4,9 @@ locals {
     development = {
       autoscaling = {
         name_prefix     = "drcash-ecs-asg-main-api-dev"
-        min_size        = 1
-        max_size        = 2
-        desired_size    = 1
+        min_size        = 0
+        max_size        = 0
+        desired_size    = 0
         instance_type   = "t3a.small"
         instance_market = "spot"
       }
