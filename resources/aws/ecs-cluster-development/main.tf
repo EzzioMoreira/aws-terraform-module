@@ -34,7 +34,7 @@ module "loadbalance" {
   name               = "development"
   type               = "application"
   internal           = false
-  subnet_ids         = data.aws_subnets.private.ids
+  subnet_ids         = data.aws_subnets.public.ids
   security_group_ids = [aws_security_group.this.id]
   tags               = local.tags
 
