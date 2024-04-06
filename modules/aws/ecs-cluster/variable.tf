@@ -39,11 +39,8 @@ variable "instance_type" {
 
 variable "instance_market" {
   type        = string
+  default     = null
   description = "value of the instance market of the ECS cluster"
-  validation {
-    condition     = contains(["on-demand", "spot"], var.instance_market)
-    error_message = "instance_market must be either on-demand or spot"
-  }
 }
 
 variable "vpc_id" {

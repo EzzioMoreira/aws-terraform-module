@@ -8,6 +8,11 @@ projects:
   workflow: default
   workspace: development
 
+- name: ecs-cluster-tools
+  dir: ./resources/aws/ecs-cluster-tools
+  workflow: default
+  workspace: production
+
 - name: s3-boletos-clinics-development
   dir: ./resources/aws/s3
   workflow: default
