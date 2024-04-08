@@ -1,6 +1,6 @@
 resource "aws_ecs_service" "this" {
   name            = var.name
-  cluster         = var.cluster_id
+  cluster         = var.cluster_name
   task_definition = aws_ecs_task_definition.this.arn
   desired_count   = var.desired_count
   launch_type     = "EC2"
@@ -24,35 +24,35 @@ resource "aws_ecs_service" "this" {
 }
 
 resource "aws_ecs_task_definition" "this" {
-  for_each                 = var.container_definitions
   family                   = var.name
-  memory                   = var.resources.memory
-  cpu                      = var.resources.cpu
   requires_compatibilities = ["EC2"]
   network_mode             = "awsvpc"
   execution_role_arn       = var.execution_role_arn
-  container_definitions    = jsondecode(
-    [{
-      name      = each.value.name
-      image     = each.value.image
-      cpu       = tonumber(each.value.cpu)
-      memory    = tonumber(each.value.memory)
-      essential = each.value.essential
-      port_mappings = each.value.port_mappings
-      environment_variables = each.value.environment_variables
-      secrets = each.value.secrets
 
-      health_check = try(each.value.health_check, {})
+  container_definitions = jsonencode([
+    for _, container in var.container_definitions : {
+      name         = container.name
+      image        = container.image
+      cpu          = container.cpu
+      memory       = container.memory
+      essential    = container.essential
+      portMappings = container.port_mappings
+      environment  = container.environment_variables
+      secrets      = container.secrets
+      expose       = container.expose
 
-    log_configuration = {
+      health_check = try(container.health_check, {})
+
+      log_configuration = {
         log_driver = "awslogs"
-        options    = {
-        "awslogs-group"         = aws_cloudwatch_log_group.this.name
-        "awslogs-region"        = data.aws_region.current.name
-        "awslogs-stream-prefix" = each.value.name
+        options = {
+          "awslogs-group"         = aws_cloudwatch_log_group.this.name
+          "awslogs-region"        = data.aws_region.current.name
+          "awslogs-stream-prefix" = container.name
         }
+      }
     }
-    }]
-  )
+  ])
 
+  tags = var.tags
 }

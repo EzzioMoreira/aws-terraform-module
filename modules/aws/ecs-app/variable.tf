@@ -3,8 +3,8 @@ variable "name" {
   type        = string
 }
 
-variable "cluster_id" {
-  description = "ID do cluster"
+variable "cluster_name" {
+  description = "name of the cluster"
   type        = string
 }
 
@@ -29,14 +29,6 @@ variable "assign_public_ip" {
   default     = false
 }
 
-variable "resources" {
-  description = "values for resources in task_definition"
-  type = object({
-    cpu    = number
-    memory = number
-  })
-}
-
 variable "execution_role_arn" {
   description = "value for execution_role_arn"
   type        = string
@@ -57,16 +49,16 @@ variable "container_definitions" {
   description = "values for container_definitions"
   type = map(
     object({
-      name   = string
-      image  = string
-      cpu    = optional(string, "0.5") # 0.5 vCPU
-      memory = optional(string, "512") # 512 MiB
-      port_mappings = list(object({
-        container_port = optional(number, 80)
-        host_port      = optional(number, 80)
-        protocol       = optional(string, "tcp")
-      }))
+      name      = string
+      image     = string
+      cpu       = optional(number, 256) # 0.5 vCPU
+      memory    = optional(number, 512) # 512 MiB
       essential = optional(bool, true)
+      port_mappings = optional(list(object({
+        containerPort = number
+        hostPort      = number
+        protocol      = string
+      })), [])
       environment_variables = optional(list(object({
         name  = string
         value = string
