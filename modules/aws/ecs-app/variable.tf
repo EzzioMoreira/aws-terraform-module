@@ -54,11 +54,13 @@ variable "container_definitions" {
       cpu       = optional(number, 256) # 0.5 vCPU
       memory    = optional(number, 512) # 512 MiB
       essential = optional(bool, true)
+      expose    = optional(bool, false)
       port_mappings = optional(list(object({
         containerPort = number
         hostPort      = number
         protocol      = string
       })), [])
+
       environment_variables = optional(list(object({
         name  = string
         value = string
@@ -77,9 +79,18 @@ variable "container_definitions" {
         startPeriod = optional(number, 30)
         }
       )
-      expose = optional(bool, false)
     })
   )
+}
+
+variable "volume" {
+  description = "Volume configuration for the task"
+  type = object({
+    name           = string
+    file_system_id = string
+    root_directory = optional(string, "/")
+  })
+  default = null
 }
 
 variable "tags" {
@@ -96,11 +107,11 @@ variable "tags" {
   description = "value of the tags to apply to the ECS cluster"
 }
 
-variable "log_group" {
+variable "log_retention" {
   description = "Time retention in dyas to log groups"
   default     = 7
   validation {
-    condition     = var.log_group >= 0 && var.log_group <= 365
-    error_message = "log_group must be between 0 and 365"
+    condition     = var.log_retention >= 0 && var.log_retention <= 365
+    error_message = "log_retention must be between 0 and 365"
   }
 }

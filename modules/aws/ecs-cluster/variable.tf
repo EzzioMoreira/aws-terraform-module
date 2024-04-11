@@ -46,11 +46,11 @@ variable "instance_market" {
 variable "vpc_id" {
   type        = string
   description = "value of the VPC ID of the ECS cluster"
-  default = "vpc-0fdcf082b368d1f78"
+  default     = "vpc-0fdcf082b368d1f78"
 }
 
 variable "subnet_ids" {
   type        = list(string)
   description = "value of the subnet IDs of the ECS cluster"
-  default = ["subnet-006bc41eeaeef42b1", "subnet-0e250f6caeebdf88b", "subnet-039de1a90eaf9955a"] 
+  default     = ["subnet-006bc41eeaeef42b1", "subnet-0e250f6caeebdf88b", "subnet-039de1a90eaf9955a"]
 }

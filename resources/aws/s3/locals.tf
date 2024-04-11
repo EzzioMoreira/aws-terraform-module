@@ -6,7 +6,7 @@ locals {
         bucket_1 = "drcash-boletos-clinics-dev"
       }
     }
-    staging    = {
+    staging = {
       buckets = {
         bucket_1 = "drcash-boletos-clinics-stg"
       }

@@ -49,11 +49,13 @@ variable "listeners" {
     port                     = string
     protocol                 = string
     default_target_group_arn = string
+    ssl_policy               = optional(string)
+    certificate_arn          = optional(string)
   }))
   default = {}
 }
 
 variable "tags" {
   description = "value of the tags to apply to the load balancer"
-  type = map(string)
+  type        = map(string)
 }

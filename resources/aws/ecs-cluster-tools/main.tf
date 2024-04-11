@@ -20,9 +20,17 @@ module "ecs_cluster" {
 ####################################################################################################
 
 resource "aws_lb_target_group" "http" {
-  name        = module.ecs_cluster.ecs_cluster.cluster_name
+  name        = "${module.ecs_cluster.ecs_cluster.cluster_name}-http"
   port        = 80
   protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = module.ecs_cluster.vpc_id
+}
+
+resource "aws_lb_target_group" "https" {
+  name        = "${module.ecs_cluster.ecs_cluster.cluster_name}-https"
+  port        = 443
+  protocol    = "HTTPS"
   target_type = "ip"
   vpc_id      = module.ecs_cluster.vpc_id
 }
@@ -42,6 +50,13 @@ module "loadbalance" {
       port                     = "80"
       protocol                 = "HTTP"
       default_target_group_arn = aws_lb_target_group.http.arn
+    }
+    https = {
+      port                     = "443"
+      protocol                 = "HTTPS"
+      default_target_group_arn = aws_lb_target_group.https.arn
+      ssl_policy               = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+      certificate_arn          = local.certificate_arn
     }
   }
 }

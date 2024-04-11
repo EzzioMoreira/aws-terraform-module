@@ -40,12 +40,12 @@ resource "aws_ecs_task_definition" "this" {
       environment  = container.environment_variables
       secrets      = container.secrets
       expose       = container.expose
+      healthCheck  = try(container.health_check, {})
 
-      health_check = try(container.health_check, {})
-
-      log_configuration = {
-        log_driver = "awslogs"
+      logConfiguration = {
+        logDriver = "awslogs"
         options = {
+          "awslogs-create-group"  = "true"
           "awslogs-group"         = aws_cloudwatch_log_group.this.name
           "awslogs-region"        = data.aws_region.current.name
           "awslogs-stream-prefix" = container.name
@@ -53,6 +53,18 @@ resource "aws_ecs_task_definition" "this" {
       }
     }
   ])
+
+  dynamic "volume" {
+    for_each = toset(var.volume == null ? [] : [var.volume])
+
+    content {
+      name = volume.value.name
+      efs_volume_configuration {
+        file_system_id = volume.value.file_system_id
+        root_directory = volume.value.root_directory
+      }
+    }
+  }
 
   tags = var.tags
 }

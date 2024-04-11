@@ -14,6 +14,8 @@ resource "aws_lb_listener" "this" {
   load_balancer_arn = aws_lb.this.arn
   port              = each.value.port
   protocol          = each.value.protocol
+  ssl_policy        = each.value.ssl_policy
+  certificate_arn   = each.value.certificate_arn
 
   default_action {
     type             = "forward"

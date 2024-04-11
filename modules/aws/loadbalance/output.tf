@@ -9,3 +9,7 @@ output "listener_arns" {
 output "lb_dns_name" {
   value = aws_lb.this.dns_name
 }
+
+output "load_balance_zone_id" {
+  value = aws_lb.this.zone_id
+}
