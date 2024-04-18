@@ -13,7 +13,8 @@ locals {
     }
     production = {
       buckets = {
-        bucket_1 = "drcash-boletos-clinics-prd"
+        bucket_1 = "drcash-boletos-clinics-prd",
+        bucket_2 = "grafana-loki-drcash"
       }
     }
   }

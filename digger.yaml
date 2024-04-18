@@ -13,17 +13,17 @@ projects:
   workflow: default
   workspace: production
 
-- name: s3-boletos-clinics-development
+- name: s3-drcash-development
   dir: ./resources/aws/s3
   workflow: default
   workspace: development
 
-- name: s3-boletos-clinics-staging
+- name: s3-drcash-staging
   dir: ./resources/aws/s3
   workflow: default
   workspace: staging
 
-- name: s3-boletos-clinics-production
+- name: s3-drcash-production
   dir: ./resources/aws/s3
   workflow: default
   workspace: production
