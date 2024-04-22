@@ -18,10 +18,6 @@ output "load_balance_zone_id" {
   value = module.loadbalance.load_balance_zone_id
 }
 
-output "target_group_arn_http" {
-  value = aws_lb_target_group.http.arn
-}
-
 output "target_group_arn_https" {
   value = aws_lb_target_group.https.arn
 }

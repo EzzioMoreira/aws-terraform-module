@@ -1,6 +1,6 @@
 locals {
   cluster_name  = "tools"
-  instance_type = "t3a.small"
+  instance_type = "t3a.medium"
   autoscaling = {
     min_size     = 1
     max_size     = 1

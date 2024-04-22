@@ -24,6 +24,7 @@ No modules.
 | [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_launch_template.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
+| [aws_service_discovery_http_namespace.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/service_discovery_http_namespace) | resource |
 | [aws_ami.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 | [aws_subnets.private](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
 
@@ -33,7 +34,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | value of the ECS cluster name | `string` | n/a | yes |
 | <a name="input_desired_size"></a> [desired\_size](#input\_desired\_size) | value of the desired capacity of the ECS cluster | `number` | n/a | yes |
-| <a name="input_instance_market"></a> [instance\_market](#input\_instance\_market) | value of the instance market of the ECS cluster | `string` | n/a | yes |
+| <a name="input_instance_market"></a> [instance\_market](#input\_instance\_market) | value of the instance market of the ECS cluster | `string` | `null` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | value of the instance type of the ECS cluster | `string` | n/a | yes |
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | value of the maximum size of the ECS cluster | `number` | n/a | yes |
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | value of the minimum size of the ECS cluster | `number` | n/a | yes |
@@ -46,5 +47,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_autoscaling_name"></a> [autoscaling\_name](#output\_autoscaling\_name) | n/a |
-| <a name="output_ecs_cluster"></a> [ecs\_cluster](#output\_ecs\_cluster) | n/a |
-| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
+| <a name="output_ecs_cluster"></a> [ecs\_cluster](#output\_ecs\_cluster) | value of the ecs cluster |
+| <a name="output_namespace_arn"></a> [namespace\_arn](#output\_namespace\_arn) | value of the namespace arn |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | value of the vpc id |

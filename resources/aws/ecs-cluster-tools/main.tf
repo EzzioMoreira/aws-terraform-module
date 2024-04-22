@@ -19,14 +19,6 @@ module "ecs_cluster" {
 ### Loadbalance tools ###
 ####################################################################################################
 
-resource "aws_lb_target_group" "http" {
-  name        = "${module.ecs_cluster.ecs_cluster.cluster_name}-http"
-  port        = 80
-  protocol    = "HTTP"
-  target_type = "ip"
-  vpc_id      = module.ecs_cluster.vpc_id
-}
-
 resource "aws_lb_target_group" "https" {
   name        = "${module.ecs_cluster.ecs_cluster.cluster_name}-https"
   port        = 443
@@ -46,11 +38,6 @@ module "loadbalance" {
   tags               = local.tags
 
   listeners = {
-    http = {
-      port                     = "80"
-      protocol                 = "HTTP"
-      default_target_group_arn = aws_lb_target_group.http.arn
-    }
     https = {
       port                     = "443"
       protocol                 = "HTTPS"

@@ -56,9 +56,11 @@ variable "container_definitions" {
       essential = optional(bool, true)
       expose    = optional(bool, false)
       port_mappings = optional(list(object({
+        name          = string
         containerPort = number
         hostPort      = number
         protocol      = string
+        appProtocol   = string
       })), [])
 
       environment_variables = optional(list(object({
@@ -115,3 +117,10 @@ variable "log_retention" {
     error_message = "log_retention must be between 0 and 365"
   }
 }
+
+variable "service_connect_configuration" {
+  description = "The ECS Service Connect configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace"
+  type        = any
+  default     = {}
+}
+
