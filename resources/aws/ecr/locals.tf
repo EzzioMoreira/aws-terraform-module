@@ -1,0 +1,5 @@
+locals {
+  repositories = [
+    "grafana-loki",
+  ]
+}

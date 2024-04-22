@@ -13,6 +13,12 @@ projects:
   workflow: default
   workspace: production
 
+- name: ecr-drcash
+  dir: ./resources/aws/ecr
+  workflow: default
+  workspace: production
+
+- name: s3-boletos-clinics-development
 - name: s3-drcash-development
   dir: ./resources/aws/s3
   workflow: default
