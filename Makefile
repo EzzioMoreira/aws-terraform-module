@@ -27,5 +27,5 @@ terraform-sh: ## Set workspace staging
 	  docker run -it --rm -v $$PWD:/app -v $$HOME/.ssh/:/root/.ssh/ -w /app/ -e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY -e TF_VAR_APP_VERSION=$(GIT_COMMIT) --entrypoint "" hashicorp/terraform:$(TERRAFORM_VERSION) sh
 
 terradocs: ## Generate documentation for terraform
-	  docker run --rm --volume $$(pwd):/terraform-docs -u $$(id -u) quay.io/terraform-docs/terraform-docs:0.17.0 markdown /terraform-docs > README.md
+	  docker run --rm --volume $$(pwd):/terraform-docs -u $$(id -u) quay.io/terraform-docs/terraform-docs:0.17.0 markdown /terraform-docs > module-docs.md
 

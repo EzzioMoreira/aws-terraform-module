@@ -1,28 +1,23 @@
-## Requirements
+## Projeto cria os repositório ECR da Dr. Cash
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.7.4 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
+Esse projeto centraliza a criação dos repositórios AWS ECR. 
 
-## Providers
+### Criar um novo repositórios. 
 
-No providers.
+Adicione o nome do novo repositório na lista `repositories` do arquivo `locals.tf`. 
 
-## Modules
+```terraform
+locals {
+  repositories = [
+    "repositorio-1",
+    "repositorio-2",
+    "repositorio-3",
+  ]
+}
+```
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_ecr-drcash"></a> [ecr-drcash](#module\_ecr-drcash) | ../../../modules/aws/ecr | n/a |
+### Documentação completa
 
-## Resources
+- [Documentação do modulo](../../../modules/aws/ecr/module-docs.md)
 
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
+- [Documentação do resource](../../../modules/aws/ecr/README.md)
