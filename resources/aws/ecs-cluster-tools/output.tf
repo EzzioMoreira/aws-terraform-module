@@ -17,11 +17,3 @@ output "load_balance_dns" {
 output "load_balance_zone_id" {
   value = module.loadbalance.load_balance_zone_id
 }
-
-output "target_group_arn_https" {
-  value = aws_lb_target_group.https.arn
-}
-
-output "listener_arns" {
-  value = module.loadbalance.listener_arns
-}

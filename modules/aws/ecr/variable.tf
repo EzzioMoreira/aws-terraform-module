@@ -35,5 +35,5 @@ variable "repository_image_scan_on_push" {
 
 variable "tags" {
   description = "A map of tags to assign to the resource"
-  type = map(string)
+  type        = map(string)
 }

@@ -14,11 +14,11 @@ output "autoscaling_name" {
 }
 
 output "vpc_id" {
-  value = var.vpc_id
+  value       = var.vpc_id
   description = "value of the vpc id"
 }
 
 output "namespace_arn" {
-  value = aws_service_discovery_http_namespace.this.arn
+  value       = aws_service_discovery_http_namespace.this.arn
   description = "value of the namespace arn"
 }

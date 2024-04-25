@@ -1,9 +1,10 @@
 resource "aws_ecs_service" "this" {
-  name            = var.name
-  cluster         = var.cluster_name
-  task_definition = aws_ecs_task_definition.this.arn
-  desired_count   = var.desired_count
-  launch_type     = "EC2"
+  name                = var.name
+  cluster             = var.cluster_name
+  task_definition     = aws_ecs_task_definition.this.arn
+  desired_count       = var.desired_count
+  launch_type         = "EC2"
+  scheduling_strategy = var.scheduling_strategy
 
   dynamic "service_connect_configuration" {
     for_each = length(var.service_connect_configuration) > 0 ? [var.service_connect_configuration] : []
@@ -53,11 +54,7 @@ resource "aws_ecs_service" "this" {
     }
   }
 
-  network_configuration {
-    subnets          = var.subnets
-    assign_public_ip = var.assign_public_ip
-    security_groups  = var.security_groups
-  }
+  
 
   dynamic "load_balancer" {
     for_each = toset(var.load_balancer == null ? [] : [var.load_balancer])
@@ -75,7 +72,7 @@ resource "aws_ecs_service" "this" {
 resource "aws_ecs_task_definition" "this" {
   family                   = var.name
   requires_compatibilities = ["EC2"]
-  network_mode             = "awsvpc"
+  network_mode             = var.network_mode
   execution_role_arn       = var.execution_role_arn
   task_role_arn            = var.execution_role_arn
 

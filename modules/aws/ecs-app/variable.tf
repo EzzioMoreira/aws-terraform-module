@@ -73,14 +73,14 @@ variable "container_definitions" {
         valueFrom = string
       })), [])
 
-      health_check = object({
-        command     = list(string)
+      health_check = optional(object({
+        command     = optional(list(string))
         retries     = optional(number, 5)
         timeout     = optional(number, 10)
         interval    = optional(number, 5)
         startPeriod = optional(number, 30)
         }
-      )
+      ))
     })
   )
 }
@@ -122,5 +122,31 @@ variable "service_connect_configuration" {
   description = "The ECS Service Connect configuration for this service to discover and connect to services, and be discovered by, and connected from, other services within a namespace"
   type        = any
   default     = {}
+}
+
+variable "scheduling_strategy" {
+  description = "The scheduling strategy to use for the service"
+  type        = string
+  default     = "REPLICA"
+  validation {
+    condition     = var.scheduling_strategy == "REPLICA" || var.scheduling_strategy == "DAEMON"
+    error_message = "scheduling_strategy must be either REPLICA or DAEMON"
+  }
+}
+
+variable "network_mode" {
+  description = "The network mode to use for the task"
+  type        = string
+  default     = "bridge"
+  validation {
+    condition     = var.network_mode == "awsvpc" || var.network_mode == "bridge" || var.network_mode == "host" || var.network_mode == "none"
+    error_message = "network_mode must be either awsvpc, bridge, host, or none"
+  }
+}
+
+variable "task_role_arn" {
+  description = "The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services"
+  type        = string
+  default     = null
 }
 

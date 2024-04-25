@@ -30,6 +30,10 @@ resource "aws_launch_template" "this" {
     market_type = var.instance_market
   }
 
+  network_interfaces {
+    associate_public_ip_address = false
+  }
+
   tag_specifications {
     resource_type = "instance"
 
