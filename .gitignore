@@ -36,3 +36,4 @@ terraform.rc
 **/.env/*
 .env
 .terraform.lock.hcl
+./postgres-data
