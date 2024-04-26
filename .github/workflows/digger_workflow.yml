@@ -1,15 +1,8 @@
 name: Digger Workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      id:
-        description: 'run identifier'
-        required: false
-      job:
-        required: false
-      comment_id:
-        required: false
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   digger-job:
