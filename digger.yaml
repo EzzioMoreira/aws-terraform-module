@@ -1,0 +1,23 @@
+projects:
+- name: ecs-cluster-o11y
+  dir: ./resources/ecs-cluster-o11y
+  workflow: default
+
+workflows:
+  default:
+    plan:
+      steps:
+        - init
+        - plan
+        - run: infracost breakdown --path=. | tee -a $DIGGER_OUT
+        - run: git checkout $DEFAULT_BRANCH && infracost breakdown --path . --format=json --out-file=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json && git fetch origin $PR_BRANCH && git checkout $PR_BRANCH
+        - run: infracost diff --path=. --compare-to=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json | tee -a $DIGGER_OUT
+    apply:
+      steps:
+        - init
+        - apply:
+          extra_args: ["-compact-warnings"]
+  workflow_configuration:
+    on_pull_request_pushed: [digger plan]
+    on_pull_request_closed: [digger unlock]
+    on_commit_to_default: [digger unlock]
