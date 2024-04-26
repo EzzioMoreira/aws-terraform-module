@@ -1,12 +1,8 @@
-locals {
-  cluster_name  = "o11y"
-  instance_type = "t3a.medium"
-  vpc_id        = "vpc-0b95a372313f6516d"
-  autoscaling = {
-    min_size     = 1
-    max_size     = 1
-    desired_size = 1
-  }
+module "db_grafana" {
+  source      = "../../modules/rds"
+  db_name     = "grafana"
+  db_username = "grafana"
+  vpc_id      = "vpc-0b95a372313f6516d"
 
   tags = {
     env           = "prod"
