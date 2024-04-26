@@ -38,9 +38,8 @@ No modules.
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | value of the instance type of the ECS cluster | `string` | n/a | yes |
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | value of the maximum size of the ECS cluster | `number` | n/a | yes |
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | value of the minimum size of the ECS cluster | `number` | n/a | yes |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | value of the subnet IDs of the ECS cluster | `list(string)` | <pre>[<br>  "subnet-006bc41eeaeef42b1",<br>  "subnet-0e250f6caeebdf88b",<br>  "subnet-039de1a90eaf9955a"<br>]</pre> | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | value of the tags to apply to the ECS cluster | `map(string)` | <pre>{<br>  "AmazonECSManaged": "true",<br>  "created": "",<br>  "documentation": "",<br>  "env": "",<br>  "repository": "",<br>  "service": "",<br>  "team": ""<br>}</pre> | no |
-| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | value of the VPC ID of the ECS cluster | `string` | `"vpc-0fdcf082b368d1f78"` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | value of the tags to apply to the ECS cluster | `map(string)` | n/a | yes |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | value of the VPC ID of the ECS cluster | `string` | n/a | yes |
 
 ## Outputs
 

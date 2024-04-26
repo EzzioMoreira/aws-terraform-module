@@ -3,7 +3,7 @@
 ####################################################################################################
 
 module "ecs_cluster" {
-  source = "../../modules/ecs-cluster"
+  source = "github.com/EzzioMoreira/aws-terraform-module//modules/ecs-cluster?ref=v0.0.1-ecs-cluster-alb"
 
   cluster_name  = local.cluster_name
   min_size      = local.autoscaling.min_size
@@ -20,7 +20,7 @@ module "ecs_cluster" {
 ### Loadbalance o11y ###
 ####################################################################################################
 module "loadbalance" {
-  source = "../../modules/loadbalance"
+  source = "github.com/EzzioMoreira/aws-terraform-module//modules/loadbalance?ref=v0.0.1-ecs-cluster-alb"
 
   name               = "${local.cluster_name}-internal"
   type               = "application"
