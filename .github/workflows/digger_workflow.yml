@@ -1,0 +1,43 @@
+name: Digger Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: 'run identifier'
+        required: false
+      job:
+        required: false
+      comment_id:
+        required: false
+
+jobs:
+  digger-job:
+    runs-on: ubuntu-latest
+    permissions:    
+      contents: write      # required to merge PRs
+      actions: write       # required for plan persistence
+      id-token: write      # required for workload-identity-federation
+      pull-requests: write # required to post PR comments
+      statuses: write      # required to validate combined PR status
+
+    steps:
+      - name: Setup Infracost
+        uses: infracost/actions/setup@v2
+        with:
+          api-key: ${{ secrets.INFRACOST_API_KEY }}
+
+      - uses: actions/checkout@v4
+      - uses: diggerhq/digger@latest
+        with:
+          setup-aws: true
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          disable-locking: true
+          digger-hostname: ${{ secrets.DIGGER_HOSTNAME }}
+          digger-organisation: ${{ secrets.DIGGER_ORGANISATION }}
+          digger-token: ${{ secrets.DIGGER_TOKEN }}
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

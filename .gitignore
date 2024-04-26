@@ -32,3 +32,8 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+*.environment
+**/.env/*
+.env
+.terraform.lock.hcl
+**./postgres-data/*
