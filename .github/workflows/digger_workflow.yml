@@ -1,8 +1,15 @@
 name: Digger Workflow
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      id:
+        description: 'run identifier'
+        required: false
+      job:
+        required: false
+      comment_id:
+        required: false
 
 jobs:
   digger-job:
@@ -32,3 +39,5 @@ jobs:
           digger-token: ${{ secrets.DIGGER_TOKEN }}
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
