@@ -34,6 +34,10 @@ projects:
   workflow: default
   workspace: production
 
+- name: github-drcash
+  dir: ./resources/github
+  workflow: default
+
 workflows:
   default:
     plan:

@@ -77,7 +77,7 @@ variable "snapshot" {
 }
 
 variable "tags" {
-  type = map(string)
+  type        = map(string)
   description = "value of the tags to apply to the ECS cluster"
 }
 

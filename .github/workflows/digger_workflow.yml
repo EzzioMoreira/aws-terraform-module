@@ -7,9 +7,9 @@ on:
         description: 'run identifier'
         required: false
       job:
-        required: false
+        required: true
       comment_id:
-        required: false
+        required: true
 
 jobs:
   digger-job:
@@ -28,7 +28,7 @@ jobs:
           api-key: ${{ secrets.INFRACOST_API_KEY }}
 
       - uses: actions/checkout@v4
-      - uses: diggerhq/digger@latest
+      - uses: diggerhq/digger@v0.4.17
         with:
           setup-aws: true
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}

@@ -6,7 +6,7 @@ resource "aws_secretsmanager_secret" "this" {
 
   tags = var.tags
 
-  depends_on = [ aws_db_instance.this ]
+  depends_on = [aws_db_instance.this]
 }
 
 resource "aws_secretsmanager_secret_version" "this" {

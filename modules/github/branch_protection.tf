@@ -10,7 +10,3 @@ resource "github_branch_protection_v3" "this" {
   }
 }
 
-resource "github_repository_dependabot_security_updates" "this" {
-  repository = github_repository.this.id
-  enabled    = true
-}

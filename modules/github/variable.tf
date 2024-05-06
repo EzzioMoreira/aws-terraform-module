@@ -11,7 +11,7 @@ variable "description" {
 variable "visibility" {
   description = "The visibility of the repository"
   type        = string
-  default     = "private"
+  default     = "internal"
 }
 
 variable "allow_squash_merge" {

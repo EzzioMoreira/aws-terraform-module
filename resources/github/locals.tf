@@ -1,8 +1,8 @@
 locals {
   repository_github = [
     {
-      name        = "drcash_github_actions"
-      description = "Repositório que centraliza pipelines do Github Action para os projetos da Dr.Cash"
+      name        = "drcash_parcelex_fake_api"
+      description = "Projeto que simula chamadas para PARCELEX"
     }
   ]
 }

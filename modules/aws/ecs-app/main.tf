@@ -54,7 +54,7 @@ resource "aws_ecs_service" "this" {
     }
   }
 
-  
+
 
   dynamic "load_balancer" {
     for_each = toset(var.load_balancer == null ? [] : [var.load_balancer])
