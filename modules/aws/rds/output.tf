@@ -3,8 +3,11 @@ output "rds_hostname" {
   description = "Hostname da instância RDS"
 }
 
-output "ssm_rds" {
-  value       = aws_secretsmanager_secret.this
+output "secret_version_arn" {
+  value = {
+    for key, _ in local.parameters : key => aws_secretsmanager_secret_version.this[key].arn
+  }
+  description = "value of the secret version ARN"
   sensitive   = true
-  description = "values of the secrets stored in AWS Secrets Manager"
 }
+
