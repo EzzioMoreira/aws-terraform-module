@@ -12,7 +12,7 @@ resource "aws_db_instance" "this" {
   backup_retention_period = var.backup_retention
   db_subnet_group_name    = aws_db_subnet_group.this.name
   vpc_security_group_ids  = [aws_security_group.this.id]
-  identifier              = var.db_name
+  identifier              = var.rds_name
   parameter_group_name    = var.parameter_group_name
   skip_final_snapshot     = var.snapshot
   publicly_accessible     = var.publicly_accessible_rds

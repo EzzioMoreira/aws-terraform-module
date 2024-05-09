@@ -22,7 +22,7 @@ variable "engine" {
 }
 
 variable "engine_version" {
-  default     = "16.1-R2"
+  default     = "16.1"
   type        = string
   description = "The engine version for database"
 }
@@ -34,16 +34,21 @@ variable "multi_az" {
 }
 
 variable "db_name" {
-  default     = "drcash"
+  default     = "postgres"
   type        = string
   description = "The name of the database"
+}
+
+variable "rds_name" {
+  default     = "drcash-db"
+  type        = string
+  description = "The name of the RDS instance"
 }
 
 variable "backup_retention" {
   type        = number
   default     = 7
   description = "The backup retention period"
-
 }
 
 variable "instance_type" {
