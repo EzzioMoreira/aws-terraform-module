@@ -2,6 +2,7 @@ locals {
   repositories = [
     "grafana-loki",
     "opentelemetry-collector",
-    "drcash_api_patients"
+    "drcash_api_patients",
+    "grafana-mimir"
   ]
 }

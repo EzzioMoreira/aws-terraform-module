@@ -1,5 +1,5 @@
 module "ecr-drcash" {
-  source   = "../../../modules/aws/ecr"
+  source   = "github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/ecr?ref=v0.2.5-s3"
   for_each = toset(local.repositories)
   name     = each.value
 
