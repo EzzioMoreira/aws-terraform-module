@@ -1,3 +1,9 @@
+data "aws_vpc" "this" {
+  tags = {
+    Name = "vpc-production"
+  }
+}
+
 data "aws_subnets" "private" {
   filter {
     name   = "vpc-id"

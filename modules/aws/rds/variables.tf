@@ -92,3 +92,14 @@ variable "publicly_accessible_rds" {
   default     = false
   description = "Whether the RDS instance is publicly accessible"
 }
+
+variable "ingress_security_group_rules" {
+  type = list(object({
+    from_port                = number
+    to_port                  = number
+    protocol                 = string
+    description              = string
+    source_security_group_id = string
+  }))
+  description = "List of ingress security group rules"
+}
