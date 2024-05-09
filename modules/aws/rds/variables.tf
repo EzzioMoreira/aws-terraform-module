@@ -104,7 +104,6 @@ variable "ingress_security_group_rules" {
     to_port                  = number
     protocol                 = string
     description              = string
-    source_security_group_id = string
   }))
   description = "List of ingress security group rules"
 }
