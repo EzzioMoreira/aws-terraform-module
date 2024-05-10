@@ -3,6 +3,7 @@ locals {
     "grafana-loki",
     "opentelemetry-collector",
     "drcash_api_patients",
-    "grafana-mimir"
+    "grafana-mimir",
+    "grafanna-tempo"
   ]
 }
