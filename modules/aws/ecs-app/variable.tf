@@ -58,7 +58,7 @@ variable "container_definitions" {
       port_mappings = optional(list(object({
         name          = string
         containerPort = number
-        hostPort      = number
+        hostPort      = optional(number, null)
         protocol      = string
         appProtocol   = string
       })), [])
