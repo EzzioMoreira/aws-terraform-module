@@ -34,6 +34,7 @@ variable "desired_size" {
 
 variable "instance_type" {
   type        = string
+  default     = "t3.medium"
   description = "value of the instance type of the ECS cluster"
 }
 
@@ -53,4 +54,40 @@ variable "subnet_ids" {
   type        = list(string)
   description = "value of the subnet IDs of the ECS cluster"
   default     = ["subnet-006bc41eeaeef42b1", "subnet-0e250f6caeebdf88b", "subnet-039de1a90eaf9955a"]
+}
+
+variable "autoscaling_instace_type" {
+  type = list(object({
+    instance_type     = string
+    weighted_capacity = number
+  }))
+  description = "value of the instance type of the ECS cluster"
+}
+
+variable "up_cpu_scaling_policy" {
+  type = object({
+    scaling_adjustment = number
+    cooldown           = number
+    cpu_target_value   = number
+  })
+  default = {
+    scaling_adjustment = 1
+    cooldown           = 300
+    cpu_target_value   = 80.0
+  }
+  description = "value of the up cpu scaling policy of the ECS cluster"
+}
+
+variable "down_cpu_scaling_policy" {
+  type = object({
+    scaling_adjustment = number
+    cooldown           = number
+    cpu_target_value   = number
+  })
+  default = {
+    scaling_adjustment = -1
+    cooldown           = 300
+    cpu_target_value   = 40.0
+  }
+  description = "value of the down cpu scaling policy of the ECS cluster"
 }

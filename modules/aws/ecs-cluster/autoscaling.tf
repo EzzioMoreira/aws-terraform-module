@@ -5,9 +5,11 @@ resource "aws_autoscaling_group" "this" {
   min_size                  = var.min_size
   max_size                  = var.max_size
   desired_capacity          = var.desired_size
-  health_check_grace_period = 0
+  desired_capacity_type     = "units"
+  health_check_grace_period = 60
   health_check_type         = "EC2"
   protect_from_scale_in     = true
+  termination_policies      = ["OldestInstance"]
   enabled_metrics = [
     "GroupMinSize",
     "GroupMaxSize",
@@ -19,9 +21,21 @@ resource "aws_autoscaling_group" "this" {
     "GroupTotalInstances"
   ]
 
-  launch_template {
-    id      = aws_launch_template.this.id
-    version = "$Latest"
+  mixed_instances_policy {
+    launch_template {
+      launch_template_specification {
+        launch_template_id = aws_launch_template.this.id
+        version            = "$Latest"
+      }
+
+      dynamic "override" {
+        for_each = var.autoscaling_instace_type
+        content {
+          instance_type     = override.value.instance_type
+          weighted_capacity = override.value.weighted_capacity
+        }
+      }
+    }
   }
 
   tag {
@@ -70,6 +84,20 @@ resource "aws_autoscaling_group" "this" {
     key                 = "AmazonECSManaged"
     value               = "true"
     propagate_at_launch = true
+  }
+}
+
+resource "aws_autoscaling_policy" "up_cpu_scaling_policy" {
+  name                   = "up-cpu-scaling-policy-${var.cluster_name}"
+  adjustment_type        = "ExactCapacity"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = aws_autoscaling_group.this.name
+
+  target_tracking_configuration {
+    target_value = var.up_cpu_scaling_policy.cpu_target_value # Escala para cima quando a utilização da CPU for igual ou superior a 80%
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
   }
 }
 

@@ -100,10 +100,10 @@ variable "publicly_accessible_rds" {
 
 variable "ingress_security_group_rules" {
   type = list(object({
-    from_port                = number
-    to_port                  = number
-    protocol                 = string
-    description              = string
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    description = string
   }))
   description = "List of ingress security group rules"
 }

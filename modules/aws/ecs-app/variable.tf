@@ -150,3 +150,16 @@ variable "task_role_arn" {
   default     = null
 }
 
+variable "autoscaling_app" {
+  description = "The autoscaling configuration for the service"
+  type = object({
+    min_capacity = number
+    max_capacity = number
+    target       = number
+  })
+  default = {
+    min_capacity = 1
+    max_capacity = 2
+    target       = 80
+  }
+}
