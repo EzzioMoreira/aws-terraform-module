@@ -55,12 +55,19 @@ variable "container_definitions" {
       memory    = optional(number, 512) # 512 MiB
       essential = optional(bool, true)
       expose    = optional(bool, false)
+
       port_mappings = optional(list(object({
         name          = string
         containerPort = number
         hostPort      = optional(number, null)
         protocol      = string
         appProtocol   = string
+      })), [])
+
+      mountPoints = optional(list(object({
+        sourceVolume  = optional(string)
+        containerPath = optional(string)
+        readOnly      = optional(bool, false)
       })), [])
 
       environment_variables = optional(list(object({
@@ -72,6 +79,16 @@ variable "container_definitions" {
         name      = string
         valueFrom = string
       })), [])
+
+      logConfiguration = optional(object({
+        logDriver = string
+        options   = optional(map(string))
+      }))
+
+      firelensConfiguration = optional(object({
+        type    = optional(string)
+        options = optional(map(string))
+      }))
 
       health_check = optional(object({
         command     = optional(list(string))
@@ -87,12 +104,23 @@ variable "container_definitions" {
 
 variable "volume" {
   description = "Volume configuration for the task"
-  type = object({
-    name           = string
-    file_system_id = string
-    root_directory = optional(string, "/")
-  })
-  default = null
+  type = list(object({
+    name      = string
+    host_path = string
+  }))
+  default = []
+}
+
+variable "create_autoscaling" {
+  description = "value for create_autoscaling"
+  type        = bool
+  default     = false
+}
+
+variable "privileged" {
+  description = "value for privileged"
+  type        = bool
+  default     = false
 }
 
 variable "tags" {

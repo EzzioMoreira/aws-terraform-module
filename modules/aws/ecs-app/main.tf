@@ -6,6 +6,7 @@ resource "aws_ecs_service" "this" {
   launch_type         = "EC2"
   scheduling_strategy = var.scheduling_strategy
 
+
   dynamic "service_connect_configuration" {
     for_each = length(var.service_connect_configuration) > 0 ? [var.service_connect_configuration] : []
 
@@ -76,42 +77,33 @@ resource "aws_ecs_task_definition" "this" {
   execution_role_arn       = var.execution_role_arn
   task_role_arn            = var.execution_role_arn
 
-  container_definitions = jsonencode([
-    for _, container in var.container_definitions : {
-      name         = container.name
-      image        = container.image
-      cpu          = container.cpu
-      memory       = container.memory
-      essential    = container.essential
-      portMappings = container.port_mappings
-      environment  = container.environment_variables
-      secrets      = container.secrets
-      expose       = container.expose
-      healthCheck  = try(container.health_check, {})
-
-      logConfiguration = {
-        logDriver = "awslogs"
-        options = {
-          "awslogs-create-group"  = "true"
-          "awslogs-group"         = aws_cloudwatch_log_group.this.name
-          "awslogs-region"        = data.aws_region.current.name
-          "awslogs-stream-prefix" = container.name
-        }
-      }
-    }
-  ])
-
   dynamic "volume" {
-    for_each = toset(var.volume == null ? [] : [var.volume])
+    for_each = var.volume != null ? toset(var.volume) : []
 
     content {
-      name = volume.value.name
-      efs_volume_configuration {
-        file_system_id = volume.value.file_system_id
-        root_directory = volume.value.root_directory
-      }
+      name      = volume.value.name
+      host_path = volume.value.host_path
     }
   }
+
+  container_definitions = jsonencode([
+    for _, container in var.container_definitions : {
+      name                  = container.name
+      image                 = container.image
+      cpu                   = container.cpu
+      memory                = container.memory
+      essential             = container.essential
+      portMappings          = container.port_mappings
+      environment           = container.environment_variables
+      secrets               = container.secrets
+      expose                = container.expose
+      healthCheck           = try(container.health_check, {})
+      privileged            = var.privileged
+      mountPoints           = container.mountPoints
+      logConfiguration      = container.logConfiguration
+      firelensConfiguration = container.firelensConfiguration
+    }
+  ])
 
   tags = var.tags
 }
