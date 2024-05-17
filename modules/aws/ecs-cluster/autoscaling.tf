@@ -22,6 +22,12 @@ resource "aws_autoscaling_group" "this" {
   ]
 
   mixed_instances_policy {
+    instances_distribution {
+      on_demand_percentage_above_base_capacity = var.on_demand_percentage_above_base_capacity
+      spot_allocation_strategy                 = var.spot_allocation_strategy
+      spot_instance_pools                      = var.spot_instance_pools
+    }
+    
     launch_template {
       launch_template_specification {
         launch_template_id = aws_launch_template.this.id

@@ -91,3 +91,21 @@ variable "down_cpu_scaling_policy" {
   }
   description = "value of the down cpu scaling policy of the ECS cluster"
 }
+
+variable "on_demand_percentage_above_base_capacity" {
+  type        = number
+  default     = 100
+  description = "value of the on demand percentage above base capacity of the ECS cluster"
+}
+
+variable "spot_allocation_strategy" {
+  type        = string
+  default     = "lowest-price"
+  description = "value of the spot allocation strategy of the ECS cluster"
+}
+
+variable "spot_instance_pools" {
+  type        = number
+  default     = 2
+  description = "value of the spot instance pools of the ECS cluster"
+}

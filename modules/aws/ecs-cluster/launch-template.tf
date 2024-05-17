@@ -26,9 +26,6 @@ resource "aws_launch_template" "this" {
     name = aws_iam_instance_profile.this.name
   }
 
-  instance_market_options {
-    market_type = var.instance_market
-  }
 
   network_interfaces {
     associate_public_ip_address = false

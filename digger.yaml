@@ -42,13 +42,10 @@ workflows:
     plan:
       steps:
         - init
+        - validate
+        - fmt
         - plan
         - run: infracost breakdown --path=. | tee -a $DIGGER_OUT
-    apply:
-      steps:
-        - init
-        - apply:
-          extra_args: ["-compact-warnings"]
-  workflow_configuration:
-    on_pull_request_pushed: [digger plan]
-    on_commit_to_default: [digger apply]
+    workflow_configuration:
+      on_pull_request_pushed: [digger plan]
+      on_commit_to_default: [digger apply]
