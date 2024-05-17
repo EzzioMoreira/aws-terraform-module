@@ -4,7 +4,7 @@ projects:
   workflow: default
 
 - name: ecs-cluster-development
-  dir: ./resources/aws/ecs-cluster-development
+  dir: ./resources/aws/ecs-cluster
   workflow: default
   workspace: development
 
@@ -18,7 +18,6 @@ projects:
   workflow: default
   workspace: production
 
-- name: s3-development
 - name: s3-drcash-development
   dir: ./resources/aws/s3
   workflow: default
@@ -45,8 +44,6 @@ workflows:
         - init
         - plan
         - run: infracost breakdown --path=. | tee -a $DIGGER_OUT
-        - run: git checkout $DEFAULT_BRANCH && infracost breakdown --path . --format=json --out-file=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json && git fetch origin $PR_BRANCH && git checkout $PR_BRANCH
-        - run: infracost diff --path=. --compare-to=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json | tee -a $DIGGER_OUT
     apply:
       steps:
         - init
