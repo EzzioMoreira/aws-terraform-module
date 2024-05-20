@@ -26,7 +26,6 @@ resource "aws_launch_template" "this" {
     name = aws_iam_instance_profile.this.name
   }
 
-
   network_interfaces {
     associate_public_ip_address = false
     security_groups             = [aws_security_group.this.id]

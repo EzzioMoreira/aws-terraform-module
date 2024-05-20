@@ -99,6 +99,7 @@ resource "aws_ecs_task_definition" "this" {
       expose                = container.expose
       healthCheck           = try(container.health_check, {})
       privileged            = var.privileged
+      user                  = container.user
       mountPoints           = container.mountPoints
       logConfiguration      = container.logConfiguration
       firelensConfiguration = container.firelensConfiguration

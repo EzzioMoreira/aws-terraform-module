@@ -59,7 +59,7 @@ variable "subnet_ids" {
 variable "autoscaling_instace_type" {
   type = list(object({
     instance_type     = string
-    weighted_capacity = number
+    weighted_capacity = optional(number, 1)
   }))
   description = "value of the instance type of the ECS cluster"
 }

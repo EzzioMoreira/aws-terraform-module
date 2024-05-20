@@ -55,6 +55,7 @@ variable "container_definitions" {
       memory    = optional(number, 512) # 512 MiB
       essential = optional(bool, true)
       expose    = optional(bool, false)
+      user      = optional(string, null)
 
       port_mappings = optional(list(object({
         name          = string

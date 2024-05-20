@@ -34,7 +34,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_autoscaling_instace_type"></a> [autoscaling\_instace\_type](#input\_autoscaling\_instace\_type) | value of the instance type of the ECS cluster | <pre>list(object({<br>    instance_type     = string<br>    weighted_capacity = number<br>  }))</pre> | n/a | yes |
+| <a name="input_autoscaling_instace_type"></a> [autoscaling\_instace\_type](#input\_autoscaling\_instace\_type) | value of the instance type of the ECS cluster | <pre>list(object({<br>    instance_type     = string<br>    weighted_capacity = optional(number, 1)<br>  }))</pre> | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | value of the ECS cluster name | `string` | n/a | yes |
 | <a name="input_desired_size"></a> [desired\_size](#input\_desired\_size) | value of the desired capacity of the ECS cluster | `number` | n/a | yes |
 | <a name="input_down_cpu_scaling_policy"></a> [down\_cpu\_scaling\_policy](#input\_down\_cpu\_scaling\_policy) | value of the down cpu scaling policy of the ECS cluster | <pre>object({<br>    scaling_adjustment = number<br>    cooldown           = number<br>    cpu_target_value   = number<br>  })</pre> | <pre>{<br>  "cooldown": 300,<br>  "cpu_target_value": 40,<br>  "scaling_adjustment": -1<br>}</pre> | no |
@@ -42,6 +42,9 @@ No modules.
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | value of the instance type of the ECS cluster | `string` | `"t3.medium"` | no |
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | value of the maximum size of the ECS cluster | `number` | n/a | yes |
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | value of the minimum size of the ECS cluster | `number` | n/a | yes |
+| <a name="input_on_demand_percentage_above_base_capacity"></a> [on\_demand\_percentage\_above\_base\_capacity](#input\_on\_demand\_percentage\_above\_base\_capacity) | value of the on demand percentage above base capacity of the ECS cluster | `number` | `100` | no |
+| <a name="input_spot_allocation_strategy"></a> [spot\_allocation\_strategy](#input\_spot\_allocation\_strategy) | value of the spot allocation strategy of the ECS cluster | `string` | `"lowest-price"` | no |
+| <a name="input_spot_instance_pools"></a> [spot\_instance\_pools](#input\_spot\_instance\_pools) | value of the spot instance pools of the ECS cluster | `number` | `2` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | value of the subnet IDs of the ECS cluster | `list(string)` | <pre>[<br>  "subnet-006bc41eeaeef42b1",<br>  "subnet-0e250f6caeebdf88b",<br>  "subnet-039de1a90eaf9955a"<br>]</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | value of the tags to apply to the ECS cluster | `map(string)` | <pre>{<br>  "AmazonECSManaged": "true",<br>  "created": "",<br>  "documentation": "",<br>  "env": "",<br>  "repository": "",<br>  "service": "",<br>  "team": ""<br>}</pre> | no |
 | <a name="input_up_cpu_scaling_policy"></a> [up\_cpu\_scaling\_policy](#input\_up\_cpu\_scaling\_policy) | value of the up cpu scaling policy of the ECS cluster | <pre>object({<br>    scaling_adjustment = number<br>    cooldown           = number<br>    cpu_target_value   = number<br>  })</pre> | <pre>{<br>  "cooldown": 300,<br>  "cpu_target_value": 80,<br>  "scaling_adjustment": 1<br>}</pre> | no |
