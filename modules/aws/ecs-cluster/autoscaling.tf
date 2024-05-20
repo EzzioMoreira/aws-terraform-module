@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "this" {
       spot_allocation_strategy                 = var.spot_allocation_strategy
       spot_instance_pools                      = var.spot_instance_pools
     }
-    
+
     launch_template {
       launch_template_specification {
         launch_template_id = aws_launch_template.this.id

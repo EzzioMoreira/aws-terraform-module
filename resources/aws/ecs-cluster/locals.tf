@@ -2,10 +2,10 @@ locals {
   environment = {
     development = {
       # atributos do cluster
-      cluster_name    = "development"
-      min_size        = 1
-      max_size        = 1
-      desired_size    = 1
+      cluster_name = "development"
+      min_size     = 1
+      max_size     = 1
+      desired_size = 1
 
       autoscaling_instance_types = [{
         instance_type     = "t3a.small"
@@ -15,9 +15,9 @@ locals {
           instance_type     = "t3a.medium"
           weighted_capacity = 2
       }]
-      on_demand_percentage_above_base_capacity = 100 # 100% de instâncias sob demanda
+      on_demand_percentage_above_base_capacity = 100            # 100% de instâncias sob demanda
       spot_allocation_strategy                 = "lowest-price" # menor preço
-      spot_instance_pools                      = 2 # quantidade de instance stop por AZ
+      spot_instance_pools                      = 2              # quantidade de instance stop por AZ
 
       # atributos do loadbalance
       loadbalance_type = "application"
