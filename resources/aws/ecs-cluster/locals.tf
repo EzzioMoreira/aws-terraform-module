@@ -3,16 +3,16 @@ locals {
     development = {
       # atributos do cluster
       cluster_name    = "development"
-      min_size        = 2
-      max_size        = 2
-      desired_size    = 2
+      min_size        = 1
+      max_size        = 1
+      desired_size    = 1
 
       autoscaling_instance_types = [{
-        instance_type     = "t3.micro"
+        instance_type     = "t3a.small"
         weighted_capacity = 1
         },
         {
-          instance_type     = "t3.small"
+          instance_type     = "t3a.medium"
           weighted_capacity = 2
       }]
       on_demand_percentage_above_base_capacity = 100 # 100% de instâncias sob demanda
