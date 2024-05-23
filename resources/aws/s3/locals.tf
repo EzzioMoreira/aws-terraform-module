@@ -9,14 +9,14 @@ locals {
     staging = {
       buckets = {
         bucket_1 = "drcash-boletos-clinics-stg",
-        bucket_2 = "drcash-contractos-clinics-stg"
+        bucket_2 = "drcash-contratos-clinics-stg"
       }
     }
     production = {
       buckets = {
         bucket_1 = "drcash-boletos-clinics-prd",
         bucket_2 = "grafana-loki-drcash",
-        bucket_3 = "drcash-contractos-clinics-prd"
+        bucket_3 = "drcash-contratos-clinics-prd"
       }
     }
   }
