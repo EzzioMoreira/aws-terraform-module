@@ -4,8 +4,8 @@ locals {
       # atributos do cluster
       cluster_name = "development"
       min_size     = 1
-      max_size     = 1
-      desired_size = 1
+      max_size     = 2
+      desired_size = 2
 
       autoscaling_instance_types = [{
         instance_type     = "t3a.small"

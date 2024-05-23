@@ -43,18 +43,6 @@ variable "subnet_ids" {
   }
 }
 
-variable "listeners" {
-  description = "value of the listeners associated with the load balancer"
-  type = map(object({
-    port                     = string
-    protocol                 = string
-    default_target_group_arn = string
-    ssl_policy               = optional(string)
-    certificate_arn          = optional(string)
-  }))
-  default = {}
-}
-
 variable "tags" {
   description = "value of the tags to apply to the load balancer"
   type        = map(string)

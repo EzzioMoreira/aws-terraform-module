@@ -58,7 +58,7 @@ resource "aws_ecs_service" "this" {
 
 
   dynamic "load_balancer" {
-    for_each = toset(var.load_balancer == null ? [] : [var.load_balancer])
+    for_each = var.load_balancer
 
     content {
       target_group_arn = load_balancer.value.target_group_arn
@@ -103,6 +103,7 @@ resource "aws_ecs_task_definition" "this" {
       mountPoints           = container.mountPoints
       logConfiguration      = container.logConfiguration
       firelensConfiguration = container.firelensConfiguration
+      command               = container.command
     }
   ])
 

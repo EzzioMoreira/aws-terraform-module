@@ -8,17 +8,35 @@ resource "aws_lb" "this" {
   tags            = var.tags
 }
 
-resource "aws_lb_listener" "this" {
-  for_each = var.listeners
-
+resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.this.arn
-  port              = each.value.port
-  protocol          = each.value.protocol
-  ssl_policy        = each.value.ssl_policy
-  certificate_arn   = each.value.certificate_arn
+  port              = "80"
+  protocol          = "HTTP"
 
   default_action {
-    type             = "forward"
-    target_group_arn = each.value.default_target_group_arn
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.this.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "arn:aws:acm:us-east-1:852704159394:certificate/d40fd5a3-353e-4334-8b67-39b5d9f62a95"
+
+  default_action {
+    type = "fixed-response"
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Not Found"
+      status_code  = "404"
+    }
   }
 }

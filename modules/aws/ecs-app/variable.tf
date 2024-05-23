@@ -37,12 +37,12 @@ variable "execution_role_arn" {
 
 variable "load_balancer" {
   description = "values for load_balancer"
-  type = object({
+  type = list(object({
     target_group_arn = string
     container_name   = string
     container_port   = number
-  })
-  default = null
+  }))
+  default = []
 }
 
 variable "container_definitions" {
@@ -56,6 +56,7 @@ variable "container_definitions" {
       essential = optional(bool, true)
       expose    = optional(bool, false)
       user      = optional(string, null)
+      command   = optional(list(string), null)
 
       port_mappings = optional(list(object({
         name          = string
