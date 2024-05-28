@@ -8,6 +8,11 @@ projects:
   workflow: default
   workspace: development
 
+- name: ecs-cluster-production
+  dir: ./resources/aws/ecs-cluster
+  workflow: default
+  workspace: production
+
 - name: ecs-cluster-tools
   dir: ./resources/aws/ecs-cluster-tools
   workflow: default
