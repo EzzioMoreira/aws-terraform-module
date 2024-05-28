@@ -1,5 +1,5 @@
 output "name" {
-  value       = module.ecs_cluster_development
+  value       = module.ecs_cluster
   description = "exibe todos atributos do cluster"
 }
 

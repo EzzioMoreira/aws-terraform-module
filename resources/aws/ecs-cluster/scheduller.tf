@@ -1,5 +1,5 @@
 resource "aws_autoscaling_schedule" "down_schedule" {
-  autoscaling_group_name = module.ecs_cluster_development.autoscaling_name
+  autoscaling_group_name = module.ecs_cluster.autoscaling_name
   scheduled_action_name  = "scale-down"
   desired_capacity       = 0
   min_size               = 0
@@ -12,7 +12,7 @@ resource "aws_autoscaling_schedule" "down_schedule" {
 }
 
 resource "aws_autoscaling_schedule" "up_schedule" {
-  autoscaling_group_name = module.ecs_cluster_development.autoscaling_name
+  autoscaling_group_name = module.ecs_cluster.autoscaling_name
   scheduled_action_name  = "scale-up"
   desired_capacity       = 1
   min_size               = 1

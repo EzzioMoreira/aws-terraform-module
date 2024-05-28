@@ -2,7 +2,7 @@
 ### ECS Cluster Development ###
 ####################################################################################################
 
-module "ecs_cluster_development" {
+module "ecs_cluster" {
   source = "../../../modules/aws/ecs-cluster"
 
   cluster_name                             = local.environment[terraform.workspace].cluster_name

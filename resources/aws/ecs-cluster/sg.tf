@@ -1,7 +1,7 @@
 resource "aws_security_group" "this" {
-  name        = "${module.ecs_cluster_development.ecs_cluster.cluster_name}-sg"
+  name        = "${module.ecs_cluster.ecs_cluster.cluster_name}-sg"
   description = "Allow http, https inbound and all outbound traffic"
-  vpc_id      = module.ecs_cluster_development.vpc_id
+  vpc_id      = module.ecs_cluster.vpc_id
 
   tags = local.tags
 
