@@ -42,6 +42,11 @@ projects:
   dir: ./resources/github
   workflow: default
 
+- name: rds-drcash-2.0-dev
+  dir: ./resources/aws/rds-drcash-2.0-dev
+  workflow: default
+  workspace: development
+
 workflows:
   default:
     plan:
