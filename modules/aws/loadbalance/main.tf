@@ -40,3 +40,8 @@ resource "aws_lb_listener" "https" {
     }
   }
 }
+
+resource "aws_lb_listener_certificate" "this" {
+  listener_arn    = aws_lb_listener.https.arn
+  certificate_arn = "arn:aws:acm:us-east-1:852704159394:certificate/7f387fe9-ade8-45cd-b4d0-6d2c54deac39"
+}
