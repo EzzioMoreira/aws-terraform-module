@@ -8,6 +8,6 @@ output "secret_version_arn" {
     for key, _ in local.parameters : key => aws_secretsmanager_secret_version.this[key].arn
   }
   description = "value of the secret version ARN"
-  sensitive   = true
+  sensitive   = false
 }
 

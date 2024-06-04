@@ -1,5 +1,5 @@
 module "database-rds-drcash2" {
-  source               = "github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/rds?ref=v0.2.4-rds"
+  source               = "../../../modules/aws/rds"
   rds_name             = local.rds_name
   engine_version       = local.engine_version
   vpc_id               = data.aws_vpc.this.id

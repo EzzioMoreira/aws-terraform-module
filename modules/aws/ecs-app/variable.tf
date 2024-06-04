@@ -29,12 +29,6 @@ variable "assign_public_ip" {
   default     = false
 }
 
-variable "execution_role_arn" {
-  description = "value for execution_role_arn"
-  type        = string
-  default     = ""
-}
-
 variable "load_balancer" {
   description = "values for load_balancer"
   type = list(object({
@@ -177,7 +171,7 @@ variable "network_mode" {
 variable "task_role_arn" {
   description = "The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services"
   type        = string
-  default     = null
+  default     = "arn:aws:iam::*:role/ecsTaskExecutionRole"
 }
 
 variable "autoscaling_app" {

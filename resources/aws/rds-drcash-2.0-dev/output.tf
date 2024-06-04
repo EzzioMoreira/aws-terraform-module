@@ -6,5 +6,5 @@ output "rds_hostname" {
 output "secret_version_arn" {
   value       = module.database-rds-drcash2.secret_version_arn
   description = "value of db_username"
-  sensitive   = true
+  sensitive   = false
 }

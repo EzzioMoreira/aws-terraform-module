@@ -80,8 +80,8 @@ resource "aws_ecs_task_definition" "this" {
   family                   = var.name
   requires_compatibilities = ["EC2"]
   network_mode             = var.network_mode
-  execution_role_arn       = var.execution_role_arn
-  task_role_arn            = var.execution_role_arn
+  execution_role_arn       = data.aws_iam_role.this.arn
+  task_role_arn            = var.task_role_arn
 
   dynamic "volume" {
     for_each = var.volume != null ? toset(var.volume) : []
