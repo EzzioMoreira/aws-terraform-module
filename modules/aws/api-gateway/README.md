@@ -56,7 +56,6 @@ module "api-gateway" {
   name                   = "grafana-web"
   description            = "API Gateway for Grafana Web"
   protocol_type          = "HTTP"
-  create_api_domain_name = true
   domain_name            = "grafana-web.drcash.com.br"
 
   integrations = {
@@ -78,16 +77,6 @@ module "api-gateway" {
   }
 
   tags = local.tags
-}
-
-output "apigateway_domain_name" {
-  value = module.api-gateway-grafana.apigateway_domain_name
-  description = "value of the API"
-}
-
-output "apigateway_hosted_zone_id" {
-  value = module.api-gateway-grafana.apigateway_hosted_zone_id
-  description = "value of the API"
 }
 ```
 

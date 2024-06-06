@@ -1,7 +1,5 @@
 # Domain name
 resource "aws_apigatewayv2_domain_name" "this" {
-  count = var.create_api_domain_name ? 1 : 0
-
   domain_name = var.domain_name
 
   domain_name_configuration {
