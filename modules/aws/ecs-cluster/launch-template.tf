@@ -20,7 +20,7 @@ resource "aws_launch_template" "this" {
     device_name = "/dev/sdf"
 
     ebs {
-      volume_size           = 10
+      volume_size           = 20
       volume_type           = "gp3"
       delete_on_termination = true
     }

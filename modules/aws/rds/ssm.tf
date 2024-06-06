@@ -1,7 +1,7 @@
 resource "aws_secretsmanager_secret" "this" {
   for_each = local.parameters
 
-  name        = "/${var.rds_name}/${terraform.workspace}/${each.key}"
+  name        = "${terraform.workspace}/${var.rds_name}_${each.key}"
   description = "DB ${var.rds_name} secret for ${each.key}"
 
   tags = var.tags

@@ -24,11 +24,12 @@ module "ecs_cluster" {
 
 module "loadbalance" {
   source = "../../../modules/aws/loadbalance"
-
-  name               = local.environment[terraform.workspace].cluster_name
-  type               = local.environment[terraform.workspace].loadbalance_type
-  internal           = local.environment[terraform.workspace].internal
-  subnet_ids         = data.aws_subnets.public.ids
+  
+  for_each           = local.environment[terraform.workspace].loadbalance
+  name               = "${local.environment[terraform.workspace].cluster_name}-${each.key}"
+  type               = each.value.type
+  internal           = each.value.internal
+  subnet_ids         = each.value.subnets
   security_group_ids = [aws_security_group.this.id]
 
   tags = local.tags

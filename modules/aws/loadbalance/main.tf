@@ -1,5 +1,5 @@
 resource "aws_lb" "this" {
-  name               = "alb-ecs-cluster-${var.name}"
+  name               = "ecs-cluster-${var.name}"
   internal           = var.internal
   load_balancer_type = var.type
 
