@@ -143,7 +143,6 @@ variable "default_stage_access_log_group_tags" {
 }
 
 # Variable Stage
-
 variable "create_default_stage" {
   description = "Whether to create default stage"
   type        = bool
@@ -179,6 +178,77 @@ variable "integrations" {
   description = "Map of API gateway routes with integrations"
   type        = map(any)
   default     = {}
+}
+
+variable "routes" {
+  description = "Map of API gateway routes with integrations"
+  type = map(object({
+    # Route
+    authorizer_key             = optional(string)
+    api_key_required           = optional(bool)
+    authorization_scopes       = optional(list(string), [])
+    authorization_type         = optional(string)
+    authorizer_id              = optional(string)
+    model_selection_expression = optional(string)
+    operation_name             = optional(string)
+    request_models             = optional(map(string), {})
+    request_parameter = optional(object({
+      request_parameter_key = optional(string)
+      required              = optional(bool, false)
+    }), {})
+    route_response_selection_expression = optional(string)
+
+    # Route settings
+    data_trace_enabled       = optional(bool)
+    detailed_metrics_enabled = optional(bool)
+    logging_level            = optional(string)
+    throttling_burst_limit   = optional(number)
+    throttling_rate_limit    = optional(number)
+
+    # Stage - Route response
+    route_response = optional(object({
+      create                     = optional(bool, false)
+      model_selection_expression = optional(string)
+      response_models            = optional(map(string))
+      route_response_key         = optional(string, "$default")
+    }), {})
+
+    # Integration
+    integration = object({
+      connection_id             = optional(string)
+      vpc_link_key              = optional(string)
+      connection_type           = optional(string)
+      content_handling_strategy = optional(string)
+      credentials_arn           = optional(string)
+      description               = optional(string)
+      method                    = optional(string)
+      subtype                   = optional(string)
+      type                      = optional(string, "AWS_PROXY")
+      uri                       = optional(string)
+      passthrough_behavior      = optional(string)
+      payload_format_version    = optional(string)
+      request_parameters        = optional(map(string), {})
+      request_templates         = optional(map(string), {})
+      response_parameters = optional(list(object({
+        mappings    = map(string)
+        status_code = string
+      })))
+      template_selection_expression = optional(string)
+      timeout_milliseconds          = optional(number)
+      tls_config = optional(object({
+        server_name_to_verify = optional(string)
+      }))
+
+      # Integration Response
+      response = optional(object({
+        content_handling_strategy     = optional(string)
+        integration_response_key      = optional(string)
+        response_templates            = optional(map(string))
+        template_selection_expression = optional(string)
+      }), {})
+    })
+  }))
+  default = {}
 }
 
 variable "default_stage_tags" {

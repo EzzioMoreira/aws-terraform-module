@@ -47,7 +47,24 @@ projects:
   workflow: default
   workspace: development
 
+- name: api-gtw-plug-play-dev
+  dir: ./resources/aws/api-gateway-drcash-2.0
+  workflow: large-project
+  workspace: development
+
 workflows:
+  large-project:
+    plan:
+      steps:
+        - init
+        - plan: 
+          extra_args: ["-parallelism=1"]
+        - run: infracost breakdown --path=. | tee -a $DIGGER_OUT
+    apply:
+      steps:
+        - init
+        - apply: 
+          extra_args: ["-parallelism=1"]
   default:
     plan:
       steps:

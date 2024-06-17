@@ -24,7 +24,7 @@ module "ecs_cluster" {
 
 module "loadbalance" {
   source = "../../../modules/aws/loadbalance"
-  
+
   for_each           = local.environment[terraform.workspace].loadbalance
   name               = "${local.environment[terraform.workspace].cluster_name}-${each.key}"
   type               = each.value.type

@@ -17,3 +17,8 @@ output "lb_listener_https" {
   value       = aws_lb_listener.https
   description = "value of the listener https"
 }
+
+output "lb_listener_http" {
+  value       = aws_lb_listener.http
+  description = "value of the listener https"
+}

@@ -24,16 +24,16 @@ locals {
         private = {
           type     = "application"
           internal = true
-          subnets = data.aws_subnets.private.ids
+          subnets  = data.aws_subnets.private.ids
         }
         public = {
           type     = "application"
           internal = false
-          subnets = data.aws_subnets.public.ids
+          subnets  = data.aws_subnets.public.ids
         }
       }
     }
-    
+
     staging = {
       # atributos do cluster
       cluster_name = "staging"
@@ -58,12 +58,12 @@ locals {
         private = {
           type     = "application"
           internal = true
-          subnets = data.aws_subnets.private.ids
+          subnets  = data.aws_subnets.private.ids
         }
         public = {
           type     = "application"
           internal = false
-          subnets = data.aws_subnets.public.ids
+          subnets  = data.aws_subnets.public.ids
         }
       }
     }
@@ -92,12 +92,12 @@ locals {
         private = {
           type     = "application"
           internal = true
-          subnets = data.aws_subnets.private.ids
+          subnets  = data.aws_subnets.private.ids
         }
         public = {
           type     = "application"
           internal = false
-          subnets = data.aws_subnets.public.ids
+          subnets  = data.aws_subnets.public.ids
         }
       }
     }

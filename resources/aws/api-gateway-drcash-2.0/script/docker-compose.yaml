@@ -1,0 +1,9 @@
+version: '3'
+services:
+  estrutura-yaml:
+    image: estrutura-yaml
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
