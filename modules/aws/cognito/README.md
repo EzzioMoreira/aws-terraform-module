@@ -50,8 +50,8 @@ terraform {
 Modulo é a principal forma de empacotar e reutilizar configurações de recursos com o Terraform.
 
 ```terraform
-module "ecr-drcash" {
-  source = "git::ssh://git@github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/cognito?ref=<VERSION>"
+module "cognito" {
+  source = "github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/cognito?ref=<VERSION>"
   
   name            = "Plug-Play-DEV"
   domain          = "authenticator.dev.drcash.com.br"

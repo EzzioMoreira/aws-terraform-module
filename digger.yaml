@@ -58,13 +58,13 @@ workflows:
       steps:
         - init
         - plan: 
-          extra_args: ["-parallelism=1"]
+          extra_args: ["-parallelism=3"]
         - run: infracost breakdown --path=. | tee -a $DIGGER_OUT
     apply:
       steps:
         - init
         - apply: 
-          extra_args: ["-parallelism=1"]
+          extra_args: ["-parallelism=3"]
   default:
     plan:
       steps:

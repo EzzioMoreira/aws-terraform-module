@@ -2,7 +2,7 @@ import yaml
 from collections import defaultdict
 
 # Carregar o arquivo YAML
-with open('postman.yaml', 'r') as file:
+with open('openapi.yaml', 'r') as file:
     yaml_content = yaml.safe_load(file)
 
 paths = yaml_content['paths']

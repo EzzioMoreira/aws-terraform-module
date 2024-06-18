@@ -1,11 +1,9 @@
 routes:
 - path: /patients/api/v1/patients/{cpf}/occupation
-  method: GET
+  method: PUT
 - path: /patients/api/v1/patients/{cpf}/address
-  method: GET
+  method: PUT
 - path: /patients/api/v1/patients/{cpf}
-  method: GET
-- path: /patients/api/v1/patients
-  method: GET
+  method: PUT
 - path: /patients/api/v1/patients/{cpf}/personal
-  method: GET
+  method: PUT
