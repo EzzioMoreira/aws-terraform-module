@@ -107,3 +107,15 @@ variable "ingress_security_group_rules" {
   }))
   description = "List of ingress security group rules"
 }
+
+variable "performance_insights_enabled" {
+  type        = bool
+  default     = false
+  description = "Whether to enable Performance Insights"
+}
+
+variable "performance_insights_retention_period" {
+  type        = number
+  default     = 7
+  description = "The number of days to retain Performance Insights data"
+}
