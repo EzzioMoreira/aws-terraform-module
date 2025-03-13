@@ -11,4 +11,4 @@ A Plataforma de Infraestrutura Dr. Cash é um conjunto de módulos Terraform des
 
 ### Documentação
 
-[Link para documentação](https://www.notion.so/drcash/Infraestrutura-como-C-digo-6e18bb1a22344822bcb0f7153bddc46d)
+[Link para documentação](https://www.notion.so/rapadura/Infraestrutura-como-C-digo-6e18bb1a22344822bcb0f7153bddc46d)

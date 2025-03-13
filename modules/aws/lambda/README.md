@@ -12,7 +12,7 @@ Terraform utiliza o arquivo de backend para armazenar o estado atual da infraest
 ```terraform
 terraform {
   backend "s3" {
-    bucket         = "drcash-terraform-tfstate"
+    bucket         = "rapadura-terraform-tfstate"
     key            = "aws/<SERVICE-NAME>/<RESOURCE-NAME>/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform_state_lock"
@@ -51,7 +51,7 @@ Modulo é a principal forma de empacotar e reutilizar configurações de recurso
 
 ```terraform
 module "lambda_notification-alert_slack" {
-  source = "github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/lambda/ecs-app?ref=v0.3.2-lambda"
+  source = "github.com/rapadura-brazil/rapadura_platform_infrastructure.git//modules/lambda/ecs-app?ref=v0.3.2-lambda"
 
   lambda_function_name = "teste-lambda"
   lambda_runtime       = "python3.8"
@@ -61,8 +61,8 @@ module "lambda_notification-alert_slack" {
     env           = "${terraform.workspace}"
     service       = "grafana"
     team          = "devops"
-    repository    = "drcash-brazil/drcash_platform_infrastructure"
-    documentation = "https://notion.so/drcash/Infraestrutura-como-C-digo"
+    repository    = "rapadura-brazil/rapadura_platform_infrastructure"
+    documentation = "https://notion.so/rapadura/Infraestrutura-como-C-digo"
     created       = "terraform"
   }
 

@@ -1,4 +1,4 @@
-module "database-rds-drcash2" {
+module "database-rds-rapadura2" {
   source               = "../../../modules/aws/rds"
   rds_name             = local.rds_name
   engine_version       = local.engine_version

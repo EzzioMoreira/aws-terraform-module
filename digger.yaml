@@ -18,12 +18,12 @@ projects:
   workflow: default
   workspace: production
 
-- name: ecr-drcash
+- name: ecr-rapadura
   dir: ./resources/aws/ecr
   workflow: default
   workspace: production
 
-- name: s3-drcash-development
+- name: s3-rapadura-development
   dir: ./resources/aws/s3
   workflow: default
   workspace: development
@@ -33,22 +33,22 @@ projects:
   workflow: default
   workspace: staging
 
-- name: s3-drcash-production
+- name: s3-rapadura-production
   dir: ./resources/aws/s3
   workflow: default
   workspace: production
 
-- name: github-drcash
+- name: github-rapadura
   dir: ./resources/github
   workflow: default
 
-- name: rds-drcash-2.0-dev
-  dir: ./resources/aws/rds-drcash-2.0-dev
+- name: rds-rapadura-2.0-dev
+  dir: ./resources/aws/rds-rapadura-2.0-dev
   workflow: default
   workspace: development
 
 - name: api-gtw-plug-play-dev
-  dir: ./resources/aws/api-gateway-drcash-2.0
+  dir: ./resources/aws/api-gateway-rapadura-2.0
   workflow: large-project
   workspace: development
 

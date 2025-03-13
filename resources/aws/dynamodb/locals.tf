@@ -4,7 +4,7 @@ locals {
     env           = "production"
     service       = "terraform"
     team          = "infrastructure"
-    repository    = "drcash-brazil/drcash_platform_infrastructure"
+    repository    = "rapadura-brazil/rapadura_platform_infrastructure"
     documentation = "null"
     created       = "terraform"
   }

@@ -12,7 +12,7 @@ Terraform utiliza o arquivo de backend para armazenar o estado atual da infraest
 ```terraform
 terraform {
   backend "s3" {
-    bucket         = "drcash-terraform-tfstate"
+    bucket         = "rapadura-terraform-tfstate"
     key            = "aws/<SERVICE-NAME>/<RESOURCE-NAME>/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform_state_lock"
@@ -51,12 +51,12 @@ Modulo é a principal forma de empacotar e reutilizar configurações de recurso
 
 ```terraform
 module "api-gateway" {
-  source = "github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/ecs-app?ref=v0.2.0-api-gateway"
+  source = "github.com/rapadura-brazil/rapadura_platform_infrastructure.git//modules/aws/ecs-app?ref=v0.2.0-api-gateway"
 
   name                   = "grafana-web"
   description            = "API Gateway for Grafana Web"
   protocol_type          = "HTTP"
-  domain_name            = "grafana-web.drcash.com.br"
+  domain_name            = "grafana-web.rapadura.com.br"
 
   integrations = {
     "ANY /{proxy}" = {

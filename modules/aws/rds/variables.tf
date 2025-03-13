@@ -40,7 +40,7 @@ variable "db_name" {
 }
 
 variable "rds_name" {
-  default     = "drcash-db"
+  default     = "rapadura-db"
   type        = string
   description = "The name of the RDS instance"
 }
@@ -58,7 +58,7 @@ variable "instance_type" {
 }
 
 variable "db_username" {
-  default     = "drcash"
+  default     = "rapadura"
   type        = string
   description = "Username of the database"
 }

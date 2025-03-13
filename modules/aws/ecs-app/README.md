@@ -31,7 +31,7 @@ Terraform utiliza o arquivo de backend para armazenar o estado atual da infraest
 ```terraform
 terraform {
   backend "s3" {
-    bucket         = "drcash-terraform-tfstate"
+    bucket         = "rapadura-terraform-tfstate"
     key            = "aws/<SERVICE-NAME>/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform_state_lock"
@@ -71,7 +71,7 @@ Modulo é a principal forma de empacotar e reutilizar configurações de recurso
 
 ```terraform
 module "ecs_service" {
-  source = "git::ssh://git@github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/ecs-app?ref=<VERSION>"
+  source = "git::ssh://git@github.com/rapadura-brazil/rapadura_platform_infrastructure.git//modules/aws/ecs-app?ref=<VERSION>"
   name             = "meu-servico"
   cluster_name     = "meu-cluster"
   desired_count    = 2

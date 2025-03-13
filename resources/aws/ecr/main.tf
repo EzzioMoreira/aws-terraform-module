@@ -1,5 +1,5 @@
-module "ecr-drcash" {
-  source   = "github.com/drcash-brazil/drcash_platform_infrastructure.git//modules/aws/ecr?ref=v0.2.5-s3"
+module "ecr-rapadura" {
+  source   = "github.com/rapadura-brazil/rapadura_platform_infrastructure.git//modules/aws/ecr?ref=v0.2.5-s3"
   for_each = toset(local.repositories)
   name     = each.value
 
@@ -7,7 +7,7 @@ module "ecr-drcash" {
     env           = "production"
     service       = each.value
     team          = "devops"
-    repository    = "drcash-brazil/drcash_platform_infrastructure"
+    repository    = "rapadura-brazil/rapadura_platform_infrastructure"
     documentation = "null"
     created       = "terraform"
   }

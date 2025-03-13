@@ -18,13 +18,13 @@ locals {
       ]
 
       cognito_domain = {
-        domain          = "auth.dev.drcash.com.br"
+        domain          = "auth.dev.rapadura.com.br"
         certificate_arn = "arn:aws:acm:us-east-1:852704159394:certificate/7f387fe9-ade8-45cd-b4d0-6d2c54deac39"
       }
 
       domain_name = {
-        domain          = "*.drcash.com.br"
-        subdomains      = ["dev"] # Subdomínios que será criado no route53 dev.drcash.com.br
+        domain          = "*.rapadura.com.br"
+        subdomains      = ["dev"] # Subdomínios que será criado no route53 dev.rapadura.com.br
         certificate_arn = "arn:aws:acm:us-east-1:852704159394:certificate/d40fd5a3-353e-4334-8b67-39b5d9f62a95"
       }
     }
@@ -36,10 +36,10 @@ locals {
   tags = {
     env           = "${terraform.workspace}"
     service       = "api-gateway"
-    product       = "drcash2.0"
+    product       = "rapadura2.0"
     project       = "${local.context[terraform.workspace].name}"
     team          = "devops"
-    repository    = "drcash-brazil/drcash_platform_infrastructure"
+    repository    = "rapadura-brazil/rapadura_platform_infrastructure"
     documentation = "null"
     created       = "terraform"
   }

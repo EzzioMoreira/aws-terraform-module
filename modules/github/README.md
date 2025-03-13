@@ -6,6 +6,6 @@ Modulo que gerencia GitHub Dr. Cash.
 
 Use as seguintes variavéis de ambiente: 
 
-- export GITHUB_OWNER=drcash-brazil
+- export GITHUB_OWNER=rapadura-brazil
 - export GITHUB_TOKEN=github_pat_xyxyxyxyxxxxxxxxxxxxxxxxxxxyyyyyyy
 

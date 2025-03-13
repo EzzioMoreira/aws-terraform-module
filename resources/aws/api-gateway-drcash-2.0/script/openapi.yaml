@@ -8,7 +8,7 @@
     "/patients/api/v1/patients/{cpf}/occupation": {
       "put": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -49,7 +49,7 @@
       },
       "get": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -99,7 +99,7 @@
     "/patients/api/v1/patients/{cpf}/address": {
       "put": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -140,7 +140,7 @@
       },
       "get": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -190,7 +190,7 @@
     "/patients/api/v1/patients/{cpf}": {
       "put": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -241,7 +241,7 @@
       },
       "get": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -289,7 +289,7 @@
       },
       "delete": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -322,7 +322,7 @@
     "/patients/api/v1/patients": {
       "get": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {
@@ -403,7 +403,7 @@
       },
       "post": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "requestBody": {
           "content": {
@@ -452,7 +452,7 @@
     "/patients/api/v1/patients/{cpf}/personal": {
       "get": {
         "tags": [
-          "DrCash.Patients"
+          "rapadura.Patients"
         ],
         "parameters": [
           {

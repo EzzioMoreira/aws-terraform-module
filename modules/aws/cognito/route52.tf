@@ -1,5 +1,5 @@
 data "aws_route53_zone" "this" {
-  name = "drcash.com.br."
+  name = "rapadura.com.br."
 }
 
 resource "aws_route53_record" "this" {

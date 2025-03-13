@@ -65,7 +65,7 @@ variable "resource_server" {
   }))
   default = [
     {
-      identifier = "https://api.drcash.com.br"
+      identifier = "https://api.rapadura.com.br"
       name       = "Dr.Cash API"
       scopes = [
         {

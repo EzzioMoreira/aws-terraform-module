@@ -30,7 +30,7 @@ locals {
     service       = "platform-infraestructure"
     team          = "infraestrutura"
     project       = "platform-infraestructure"
-    repository    = "https://bitbucket.org/drcash/drcash_platform_infrastructure"
+    repository    = "https://bitbucket.org/rapadura/rapadura_platform_infrastructure"
     documentation = "n/a"
     created       = "terraform"
   }

@@ -109,8 +109,8 @@ locals {
     env           = "${terraform.workspace}"
     service       = "ecs-cluster"
     team          = "devops"
-    repository    = "drcash-brazil/drcash_platform_infrastructure"
-    documentation = "https://notion.so/drcash/Infraestrutura-como-C-digo"
+    repository    = "rapadura-brazil/rapadura_platform_infrastructure"
+    documentation = "https://notion.so/rapadura/Infraestrutura-como-C-digo"
     created       = "terraform"
   }
 }
