@@ -1,6 +1,6 @@
 # Modulo Terraform GitHub
 
-Modulo que gerencia GitHub Dr. Cash. 
+Modulo que gerencia GitHub rapadura. 
 
 ## Aplicar manualmente
 

@@ -2,17 +2,17 @@ locals {
   context = {
     development = {
       name               = "Plug-Play-DEV"
-      description        = "API Gateway for services Dr.Cash 2.0 environment DEV"
+      description        = "API Gateway for services rapadura 2.0 environment DEV"
       protocol_type      = "HTTP"
       security_group_ids = "sg-0a8bb52784a0c8786"
 
       client = [
         {
-          name   = "Admin APIs Dr.Cash 2.0"
+          name   = "Admin APIs rapadura 2.0"
           scopes = ["clinics/admin"]
         },
         {
-          name   = "QA APIs Dr.Cash API 2.0"
+          name   = "QA APIs rapadura API 2.0"
           scopes = ["clinics/admin"]
         }
       ]

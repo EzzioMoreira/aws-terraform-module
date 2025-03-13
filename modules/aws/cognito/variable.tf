@@ -66,7 +66,7 @@ variable "resource_server" {
   default = [
     {
       identifier = "https://api.rapadura.com.br"
-      name       = "Dr.Cash API"
+      name       = "rapadura API"
       scopes = [
         {
           scope_name        = "admin"
@@ -114,7 +114,7 @@ variable "client" {
   }))
   default = [
     {
-      name   = "Dr.Cash Admin API 2.0"
+      name   = "rapadura Admin API 2.0"
       scopes = ["user"]
     }
   ]

@@ -60,7 +60,7 @@ module "cognito" {
   resource_server = [
     {
       identifier = "clinics"
-      name       = "Clinics Admin API Dr.Cash API 2.0"
+      name       = "Clinics Admin API rapadura API 2.0"
       scopes = [
         {
           scope_name        = "admin"
@@ -70,11 +70,11 @@ module "cognito" {
 
   client = [
     {
-      name   = "Admin APIs Dr.Cash 2.0"
+      name   = "Admin APIs rapadura 2.0"
       scopes = ["clinics/admin"]
     },
     {
-      name   = "QA APIs Dr.Cash API 2.0"
+      name   = "QA APIs rapadura API 2.0"
       scopes = ["clinics/admin"]
     }]
 

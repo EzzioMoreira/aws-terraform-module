@@ -1,4 +1,4 @@
-## Projeto cria os repositório ECR da Dr. Cash
+## Projeto cria os repositório ECR da rapadura
 
 Esse projeto centraliza a criação dos repositórios AWS ECR. 
 
